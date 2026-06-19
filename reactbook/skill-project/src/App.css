@@ -1,0 +1,69 @@
+/* ==========================================================================
+   INTERACTIVE UTILITIES & ANIMATIONS
+   ========================================================================== */
+
+/* Smooth fade-in animation for loading cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation directly to course card item boxes */
+.card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* Glow transition effect for text inputs when targeted */
+.add-course-form input:focus,
+.add-course-form select:focus,
+.search:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15) !important;
+  transition: all 0.25s ease-in-out;
+}
+
+/* Subtle scaling effects for actionable buttons */
+.btn-success,
+.card button,
+.hero button {
+  transition: transform 0.1s ease, filter 0.2s ease !important;
+}
+
+.btn-success:active,
+.card button:active,
+.hero button:active {
+  transform: scale(0.96); /* Feels like a real button press */
+}
+
+/* Custom indicator dot for the counter badge */
+.pulse-badge {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  margin-right: 6px;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}

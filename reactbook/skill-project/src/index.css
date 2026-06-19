@@ -1,0 +1,503 @@
+/* ==========================================================================
+   1. GLOBAL RESETS & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* ==========================================================================
+   2. MASTER DASHBOARD LAYOUT
+   ========================================================================== */
+.layout {
+  display: flex;
+  min-height: calc(100vh - 70px);
+}
+
+main {
+  flex: 1;
+  padding: 40px;
+  background: #f1f5f9;
+}
+
+.page-container {
+  width: 100%;
+}
+
+/* ==========================================================================
+   3. NAVIGATION BAR & DROPDOWN RULES
+   ========================================================================== */
+nav {
+  height: 70px;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav h2 {
+  color: #38bdf8;
+  font-size: 24px;
+}
+
+nav ul {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  align-items: center;
+}
+
+nav li {
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav li:hover {
+  color: #38bdf8;
+}
+
+/* ==========================================================================
+   NAVBAR DROPDOWN REFINEMENTS
+   ========================================================================== */
+.nav-dropdown-trigger {
+  position: relative;
+  padding: 10px 0;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #0f172a;
+  min-width: 220px;
+  padding: 8px;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 999;
+}
+
+.dropdown-item {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  color: #334155;
+}
+
+.dropdown-item:hover {
+  background: #f1f5f9;
+  color: #2563eb;
+  transform: translateX(4px);
+}
+
+nav button {
+  padding: 8px 16px;
+  background: #334155;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+nav button:hover {
+  background: #475569;
+}
+
+/* ==========================================================================
+   4. SIDEBAR 
+   ========================================================================== */
+aside {
+  width: 260px;
+  background: #1e293b;
+  color: white;
+  padding: 30px 20px;
+}
+
+aside h3 {
+  margin-bottom: 20px;
+  color: #38bdf8;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   5. HERO BANNER
+   ========================================================================== */
+.hero {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  color: #0f172a;
+  margin-bottom: 12px;
+  font-size: 32px;
+}
+
+.hero p {
+  color: #64748b;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.hero button {
+  padding: 10px 24px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.hero button:hover {
+  background: #1d4ed8;
+}
+
+/* ==========================================================================
+   6. DYNAMIC ADD COURSE FORM
+   ========================================================================== */
+.add-course-form {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.add-course-form h3 {
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.add-course-form form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.add-course-form input,
+.add-course-form select,
+.search {
+  height: 42px;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+  color: #0f172a;
+  transition: border-color 0.2s;
+}
+
+.add-course-form input:focus,
+.add-course-form select:focus,
+.search:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-success {
+  height: 42px;
+  padding: 0 20px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-success:hover {
+  background: #059669;
+}
+
+/* ==========================================================================
+   7. UTILITY SEARCH CONTAINER
+   ========================================================================== */
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
+}
+
+.search {
+  width: 320px;
+}
+
+/* ==========================================================================
+   8. COURSE CARDS GRID SYSTEM
+   ========================================================================== */
+.courses {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 280px;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #64748b;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.course-badge {
+  display: inline-block;
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.card .button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.card button {
+  flex: 1;
+  height: 38px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.card button:hover {
+  background: #1d4ed8;
+}
+
+.card button:last-child {
+  background: #ef4444;
+}
+
+.card button:last-child:hover {
+  background: #dc2626;
+}
+
+/* Prevent double red button assignments on enrollment components */
+.card .button-group button:only-child {
+  background: #2563eb;
+}
+.card .button-group button:only-child:hover {
+  background: #1d4ed8;
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+footer {
+  background: #0f172a;
+  color: #94a3b8;
+  text-align: center;
+  padding: 24px;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   10. DARK THEME CONFIGURATIONS
+   ========================================================================== */
+.dark {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+.dark main {
+  background: #0f172a;
+}
+
+.dark .hero,
+.dark .card,
+.dark .add-course-form {
+  background: #1e293b;
+  box-shadow: none;
+}
+
+.dark .hero h1,
+.dark .card h2,
+.dark .add-course-form h3 {
+  color: white;
+}
+
+.dark .hero p,
+.dark .card p {
+  color: #94a3b8;
+}
+
+.dark .course-badge {
+  background: #334155;
+  color: #38bdf8;
+}
+
+.dark input,
+.dark select {
+  background: #334155;
+  color: white;
+  border: 1px solid #475569;
+}
+
+.dark nav,
+.dark footer {
+  background: #020617;
+}
+
+.dark .dropdown {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dark .dropdown-item {
+  color: #cbd5e1;
+}
+
+.dark .dropdown-item:hover {
+  background: #334155;
+  color: #38bdf8;
+}
+
+/* Creates a seamless hover zone bridge between the nav link and dropdown menu box */
+.nav-dropdown-trigger::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+}
+
+/* ==========================================================================
+   CONTACT FORM SECTION CLEANUPS
+   ========================================================================== */
+.page-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin-top: 20px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.page-container h1 {
+  color: #0f172a;
+}
+
+.page-container input,
+.page-container textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.page-container input:focus,
+.page-container textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.page-container button[type="submit"] {
+  height: 46px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.page-container button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+/* Dark mode compatibility for contact form */
+.dark .page-container h1 {
+  color: white;
+}
+
+.dark .page-container form {
+  background: #1e293b;
+  box-shadow: none;
+}
+
+.dark .page-container input,
+.dark .page-container textarea {
+  background: #334155;
+  color: white;
+  border-color: #475569;
+}
